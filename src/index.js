@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
-const port = 3000
 const path = require('path')
 const Route = require('./routes/index')
 const db = require('./config/mongodb')
@@ -34,4 +33,4 @@ Route(app)
 
 console.log(process.env.port)
 
-app.listen(process.env.PORT,()=> console.log(`thành công`))
+app.listen(process.env.PORT || 3000,()=> console.log(`thành công`))
