@@ -1,0 +1,19 @@
+body {
+  font-size: 16px; }
+
+.app {
+  margin-top: 63px; }
+
+.header-navbar {
+  height: 63px; }
+  .header-navbar #navbarSupportedContent.show {
+    background-color: var(--dark); }
+
+.auth-warpper {
+  height: calc(100vh - 63px); }
+  .auth-warpper .form-auth .header-form {
+    margin: 50px 0; }
+
+.header-brand {
+  font-size: 25px;
+  letter-spacing: 5px; }

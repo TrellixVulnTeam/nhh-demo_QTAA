@@ -1,0 +1,32 @@
+@import 'var';
+
+body{
+    font-size: 16px
+}
+
+.app{
+    margin-top: $navbar-height;
+}
+
+.header-navbar{
+    height: $navbar-height;
+    #navbarSupportedContent.show{
+        background-color: var(--dark);
+    }
+}
+
+.auth-warpper{
+    height: calc(100vh - 63px) ;
+    .form-auth{
+        .header-form{
+            margin: 50px 0;
+        }
+    }
+}
+
+
+
+.header-brand{
+    font-size: 25px;
+    letter-spacing: 5px;
+}

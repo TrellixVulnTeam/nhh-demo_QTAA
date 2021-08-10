@@ -1,0 +1,58 @@
+<div class="container auth-warpper">
+    <div class="row h-100">
+        <form class="form-auth-login form-auth col-lg-6 col-sm-12 offset-lg-3" method="POST" action="/auth/login">
+            <h3 class="header-form">Đăng Nhập</h3>
+            <div class="form-group">
+                <label for="form-login-username">Tên tài khoản</label>
+                <input name="username" type="text" class="form-control" id="form-login-username" aria-describedby="emailHelp" placeholder="Nhập tên tài khoản">
+                <small id="form-login-username-error" class="form-text text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="form-login-password">Mật khẩu</label>
+                <input name="password" type="password" class="form-control" id="form-login-password" placeholder="Nhập mật khẩu">
+                <small id="form-login-username-error" class="form-text text-danger"></small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-4">Đăng Nhập</button>
+            <p class="mt-4">
+                Nếu bạn chưa có tài khoản bấm vào đây. 
+                <a href="/auth/signup">Đăng Ký</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+{{!-- modal --}}
+{{#if error}}
+<div class="modal d-block modal-errors" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ms}}</h5>
+        <button type="button" class="icon-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-danger">{{{errors}}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        //modal errors
+        $('.icon-close').click(function(){
+            $('.modal-errors').removeClass('d-block')
+        })  
+        $('.btn-close-modal').click(function(){
+            $('.modal-errors').removeClass('d-block')
+        })        
+    })
+</script>

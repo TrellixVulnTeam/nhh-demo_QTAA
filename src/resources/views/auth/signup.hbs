@@ -1,0 +1,94 @@
+<div class="container auth-warpper">
+    <div class="row h-100">
+        <form class="form-auth-signup form-auth col-lg-6 col-sm-12 offset-lg-3" method="POST" action="/auth/signup">
+            <h3 class="header-form">Đăng Ký</h3>
+            <div class="form-group">
+                <label for="form-signup-username">Tên tài khoản</label>
+                <input name="username" type="text" class="form-control" id="form-signup-username" aria-describedby="emailHelp" placeholder="Nhập tên tài khoản">
+                <small id="form-signup-username-error" class="form-text text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="form-signup-password">Mật khẩu</label>
+                <input name="password" type="password" class="form-control" id="form-signup-password" placeholder="Nhập mật khẩu">
+                <small id="form-signup-password-error" class="form-text text-danger"></small>
+            </div>
+            <div class="form-group">
+                <label for="form-signup-password-confirm">Xác Nhận Mật khẩu</label>
+                <input name="passwordCof" type="password" class="form-control" id="form-signup-password-confirm" placeholder="Nhập lại mật khẩu">
+                <small id="form-signup-password-confirm-error" class="form-text text-danger"></small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-4" id="btn-submit-signup">Đăng Ký</button>
+            <p class="mt-4">
+                Nếu bạn đã có tài khoản bấm vào đây. 
+                <a href="/auth/signup">Đăng Nhập</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+{{!-- modal --}}
+{{#if error}}
+<div class="modal d-block modal-errors" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ms}}</h5>
+        <button type="button" class="icon-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-danger">{{{errors}}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+
+        //validate username
+        $('#form-signup-username').keyup(function(){
+            if ($(this).val().includes(' ') || $(this).val().length<12){
+                $('#form-signup-username-error').text('Nhập tài khoản tối thiểu 12 kí tự và không có khoảng trắng')
+            }else{
+                $('#form-signup-username-error').text('')
+            }
+        })
+
+        //validate password
+        $('#form-signup-password').keyup(function(){
+            if ($(this).val().includes(' ') || $(this).val().length<8){
+                $('#form-signup-password-error').text('Nhập mật khẩu tối thiểu 8 kí tự và không có khoảng trắng')
+            }else{
+                $('#form-signup-password-error').text('')
+            }
+        })
+
+        //validate password confirm
+        $('#form-signup-password-confirm').keyup(function(){
+            if ($(this).val() !== $('#form-signup-password').val()){
+                $('#form-signup-password-confirm-error').text('Xác nhân mật khẩu không khớp')
+            }else{
+                $('#form-signup-password-confirm-error').text('')
+            }
+        })
+
+
+        //modal errors
+        $('.icon-close').click(function(){
+            $('.modal-errors').removeClass('d-block')
+        })  
+        $('.btn-close-modal').click(function(){
+            $('.modal-errors').removeClass('d-block')
+        })        
+    })
+</script>
